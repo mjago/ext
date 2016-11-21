@@ -1,0 +1,17 @@
+* one. Build simple extension  MyTest module containing give_me_five method
+
+#+begin_src sh
+cd one
+ruby extconf.rb # => creating makefile
+make            # => compiling mytest.c
+                # => linking shared-object mytest.bundle
+ruby -I. -r my_test -e "require 'my_test'; include MyTest; p give_me_five " # => 5
+
+#+end_src
+
+#+RESULTS:
+| creating | Makefile      |                |
+| linking  | shared-object | my_test.bundle |
+| 5        |               |                |
+
+* two. Pass extension an integer ( method give_me_five_of(x) )
